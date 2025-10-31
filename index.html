@@ -507,10 +507,27 @@
         // Auto-load the first dataset on page load
         document.addEventListener("DOMContentLoaded", () => {
           const tabs = document.querySelectorAll("button.tab");
-          const hash = window.location.hash.slice(1); // slug from URL
 
+          // Get query param and hash
+          const urlParams = new URLSearchParams(window.location.search);
+          const datasetParam = urlParams.get("dataset");
+          const hash = window.location.hash.slice(1);
+
+          // Decide which slug to use (query param preferred)
+          const slugToUse = datasetParam || hash;
+
+          // Update URL: replace ?dataset=... with #slug
+          if (datasetParam) {
+            history.replaceState(
+              null,
+              "",
+              `${window.location.pathname}#${slugToUse}`
+            );
+          }
+
+          // Find and click the corresponding tab
           const tabToClick =
-            [...tabs].find((tab) => tab.dataset.slug === hash) || tabs[0];
+            [...tabs].find((tab) => tab.dataset.slug === slugToUse) || tabs[0];
 
           if (tabToClick) tabToClick.click();
         });

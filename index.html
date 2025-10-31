@@ -22,46 +22,81 @@
         color: rgb(21, 101, 192);
         font-size: 22px;
         font-weight: 400;
-        padding: 0px;
-        margin: 0px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 3px 0;
+        border-bottom: 1px solid #d7dfe2;
+      }
+
+      .title-doi {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .header-image img {
+        height: 80px;
+        width: auto;
+        object-fit: contain;
       }
 
       .doi-badge {
-        font-size: 12px;
+        color: #333;
+        font-size: 75%;
+        margin-bottom: 9px;
+        margin-top: 0;
+        font-weight: 400;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
       }
 
       .doi-left {
-        background-color: rgb(52, 58, 64);
-        color: white;
-        font-family: "Roboto", sans-serif;
-        border-top-left-radius: 18%;
-        border-bottom-left-radius: 18%;
+        border-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        color: #fff;
+        background-color: #343a40;
+        display: inline-block;
+        padding: 0.25em 0.4em;
+        display: inline-block;
       }
 
       .doi-right {
-        background-color: rgb(192, 219, 255);
-        color: black;
-        font-family: "Roboto", sans-serif;
+        border-radius: 0.25rem;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        color: #212529;
+        background-color: #a2cbff;
+        display: inline-block;
+        padding: 0.25em 0.4em;
         text-decoration: none;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        padding-left: 5px;
       }
 
-      /* Hover effects */
       .doi-right:hover {
-        background-color: rgb(205, 230, 255); /* slightly lighter blue */
-        color: black;
+        background-color: rgb(205, 230, 255);
       }
 
       #accordion-container {
         max-width: 800px;
-        margin: 10px auto 50px auto;
+        margin: 1em auto 2em;
       }
 
       .accordion {
-        margin-bottom: 10px;
-        border-radius: 3px 3px 3px 3px;
+        margin-bottom: 6px;
+        border-radius: 3px;
         overflow: hidden;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         font-family: "Open Sans", sans-serif;
@@ -69,50 +104,48 @@
 
       .accordion-btn {
         background-color: rgb(21, 101, 192);
-        font-family: "Open Sans", sans-serif;
+        color: #e9e9e9;
         font-size: 15px;
         font-weight: 500;
-        color: #e9e9e9;
-        cursor: pointer;
-        padding: 6px 18px;
         width: 100%;
+        padding: 6px 14px;
         text-align: left;
         border: none;
+        cursor: pointer;
         outline: none;
-        transition: 0.2s;
-        position: relative; /* allows pseudo-element positioning */
+        position: relative;
+        transition: background-color 0.2s;
+        letter-spacing: 1px;
+        word-spacing: 2.5px;
       }
 
-      /* Chevron icon on the right */
       .accordion-btn::after {
-        content: "›"; /* Unicode right arrow */
+        content: "›";
         position: absolute;
         right: 12px;
         top: 50%;
-        transform: translateY(-50%) rotate(0deg);
-        transition: transform 0.2s ease;
+        transform: translateY(-50%);
         font-size: 24px;
-      }
-
-      /* Rotate chevron when active (downward arrow) */
-      .accordion-btn.active::after {
-        transform: translateY(-50%) rotate(90deg);
-        color: black; /* match active state color */
+        transition: transform 0.2s ease;
       }
 
       .accordion-btn.active {
         background-color: #ccc;
-        color: black;
+        color: #000;
+      }
+
+      .accordion-btn.active::after {
+        transform: translateY(-50%) rotate(90deg);
+        color: #000;
       }
 
       .accordion-panel {
-        padding: 0 10px;
         display: none;
         overflow: hidden;
         background-color: #f9f9f9;
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
+        border: 1px solid #ccc;
+        border-top: none;
+        padding: 0 10px;
       }
 
       .accordion-panel p {
@@ -121,7 +154,7 @@
 
       .accordion-panel a {
         color: rgb(62, 112, 187);
-        text-decoration: none; /* no underline by default */
+        text-decoration: none;
         transition: color 0.2s, text-decoration 0.2s;
       }
 
@@ -133,12 +166,14 @@
       #kpcovrWrapper {
         margin: 1em;
       }
+
       #tabs {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5em;
         margin-bottom: 1em;
       }
+
       button.tab {
         background: #eee;
         border: 1px solid #ccc;
@@ -147,19 +182,16 @@
         cursor: pointer;
         transition: background 0.2s;
       }
-      button.tab.active {
-        background: #0077cc;
-        color: white;
-      }
-
-      button.tab.active:hover {
-        background: #0077cc;
-        color: white;
-        cursor: default;
-      }
 
       button.tab:hover {
         background: #ddd;
+      }
+
+      button.tab.active {
+        background: #0077cc;
+        color: #fff;
+        cursor: default;
+        pointer-events: none;
       }
 
       #top-container,
@@ -167,36 +199,34 @@
         display: flex;
         justify-content: center;
       }
+
       #viewer-container {
         display: flex;
-        gap: 1em;
-        justify-content: center;
         flex-wrap: wrap;
+        justify-content: center;
+        gap: 1em;
         padding: 1em;
       }
 
-      /* Left column (map) */
       #map {
         flex: 1 1 500px;
         min-width: 500px;
-        height: 600px;
         max-width: 1250px;
+        height: 600px;
         border: 1px solid #ccc;
         border-radius: 8px;
         padding: 1px;
       }
 
-      /* Right column (structure + info stacked vertically) */
       #rhs-container {
         display: flex;
         flex-direction: column;
-        flex: 1 1 500px; /* grow/shrink, min-width 500px */
+        flex: 1 1 500px;
         min-width: 500px;
         max-width: 1250px;
         gap: 1em;
       }
 
-      /* Structure takes most of RHS height */
       #structure {
         flex: 1;
         height: 600px;
@@ -204,10 +234,8 @@
         border-radius: 8px;
       }
 
-      /* Info box below structure */
       #info {
-        flex: 0 0 auto;
-        padding: 0.5em 0.5em;
+        padding: 0.5em;
         border-radius: 6px;
         background-color: #f5f5f5;
       }
@@ -217,10 +245,11 @@
         margin: 1em;
       }
 
+      /* media query stack under the other. */
       @media (max-width: 1100px) {
         #map,
         #rhs-container {
-          flex: 1 1 100%; /* full width on smaller screens */
+          flex: 1 1 100%;
           min-width: 0;
         }
       }
@@ -228,7 +257,6 @@
   </head>
 
   <body>
-    <!-- Materials Cloud header (optional) -->
     <script
       src="https://cdn.jsdelivr.net/gh/materialscloud-org/mc-header@main/header.js"
       defer
@@ -245,24 +273,21 @@
     </script>
 
     <div id="kpcovrWrapper">
-      <div
-        style="
-          padding: 3px;
-          border-bottom: 1px;
-          border-color: #888;
-          border-bottom-style: solid;
-        "
-      >
-        <h3>Kernel principal covariates regression</h3>
-
-        <span class="doi-badge">
-          <span class="doi-left">DOI</span
-          ><a
-            href="https://doi.org/10.24435/materialscloud:ay-eq"
-            class="doi-right"
-            >10.24435/materialscloud:ay-eq</a
-          >
-        </span>
+      <div class="header-container">
+        <div class="title-doi">
+          <h3>Kernel principal covariates regression</h3>
+          <span class="doi-badge">
+            <span class="doi-left">DOI</span
+            ><a
+              href="https://doi.org/10.24435/materialscloud:ay-eq"
+              class="doi-right"
+              >10.24435/materialscloud:ay-eq</a
+            >
+          </span>
+        </div>
+        <div class="header-image">
+          <img src="kpcovr_image.png" alt="KPCovR" />
+        </div>
       </div>
 
       <!-- Narrow accordions -->
@@ -362,21 +387,47 @@
       </span>
 
       <script type="text/javascript">
-        // Define datasets manually (from ./datafiles)
         const datasets = {
-          "Arginine dipeptide":
-            "datafiles/arginine-kpcovr-0.55-chemiscope.json",
-          "Azaphenacenes 0.65":
-            "datafiles/azaphenacenes-kpcovr-0.65-chemiscope.json",
-          "Carbon α=0.0": "datafiles/C-VII-kpcovr-0.0-chemiscope.json",
-          "Carbon α=0.5": "datafiles/C-VII-kpcovr-0.5-chemiscope.json",
-          "Carbon α=1.0": "datafiles/C-VII-kpcovr-1.0-chemiscope.json",
-          "DEEM Zeolites (local properties)":
-            "datafiles/DEEM-local-kpcovr-0.5-chemiscope.json",
-          "DEEM Zeolites (global properties)":
-            "datafiles/DEEM-global-kpcovr-0.5-chemiscope.json",
-          "QM9 α=0.0": "datafiles/qm9-12PC-kpcovr-0.5-chemiscope.json",
-          "QM9 α=0.5": "datafiles/qm9-12PC-kpcovr-1.0-chemiscope.json",
+          arginine: {
+            label: "Arginine dipeptide",
+            path: "datafiles/arginine-kpcovr-0.55-chemiscope.json",
+          },
+          azaphenacenes: {
+            label: "Azaphenacenes",
+            path: "datafiles/azaphenacenes-kpcovr-0.65-chemiscope.json",
+          },
+          "carbons-00": {
+            label: "Carbon α=0.0",
+            path: "datafiles/C-VII-kpcovr-0.0-chemiscope.json",
+          },
+          "carbons-05": {
+            label: "Carbon α=0.5",
+            path: "datafiles/C-VII-kpcovr-0.5-chemiscope.json",
+          },
+          "carbons-10": {
+            label: "Carbon α=1.0",
+            path: "datafiles/C-VII-kpcovr-1.0-chemiscope.json",
+          },
+          csd: {
+            label: "Chemical Shieldings",
+            path: "datafiles/CSD-1000R-kpcovr-0.5-chemiscope.json",
+          },
+          "deem-local": {
+            label: "DEEM Zeolites (local properties)",
+            path: "datafiles/DEEM-local-kpcovr-0.5-chemiscope.json",
+          },
+          "deem-global": {
+            label: "DEEM Zeolites (global properties)",
+            path: "datafiles/DEEM-global-kpcovr-0.5-chemiscope.json",
+          },
+          "qm9-05": {
+            label: "QM9 α=0.5",
+            path: "datafiles/qm9-12PC-kpcovr-0.5-chemiscope.json",
+          },
+          "qm9-10": {
+            label: "QM9 α=1.0",
+            path: "datafiles/qm9-12PC-kpcovr-1.0-chemiscope.json",
+          },
         };
 
         const config = {
@@ -388,14 +439,17 @@
 
         // Build tab buttons dynamically
         const tabsContainer = document.getElementById("tabs");
-        for (const [name, path] of Object.entries(datasets)) {
+
+        for (const [slug, { label, path }] of Object.entries(datasets)) {
           const btn = document.createElement("button");
           btn.className = "tab";
-          btn.textContent = name;
-          btn.onclick = () => loadDataset(name, path, btn);
+          btn.textContent = label;
+          btn.dataset.slug = slug;
+          btn.onclick = () => loadDataset(label, path, btn);
           tabsContainer.appendChild(btn);
         }
 
+        // fix NaN in JSONS.
         function parseJsonWithNaN(text) {
           return JSON.parse(
             text.replace(/\bNaN\b/g, '"***NaN***"'),
@@ -434,6 +488,7 @@
             .catch((err) => {
               errorDiv.innerHTML = `<div>Failed to load ${name}: ${err}</div>`;
             });
+          history.replaceState(null, "", `#${button.dataset.slug}`);
         }
 
         // accordion buttons
@@ -451,8 +506,13 @@
 
         // Auto-load the first dataset on page load
         document.addEventListener("DOMContentLoaded", () => {
-          const firstTab = document.querySelector("button.tab");
-          if (firstTab) firstTab.click();
+          const tabs = document.querySelectorAll("button.tab");
+          const hash = window.location.hash.slice(1); // slug from URL
+
+          const tabToClick =
+            [...tabs].find((tab) => tab.dataset.slug === hash) || tabs[0];
+
+          if (tabToClick) tabToClick.click();
         });
       </script>
     </div>
